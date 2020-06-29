@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -61,9 +63,6 @@ public class BookListActivity extends AppCompatActivity {
 
         // Set layout manager to position the items
         rvBooks.setLayoutManager(new LinearLayoutManager(this));
-
-        // Fetch the data remotely
-        fetchBooks("Oscar Wilde");
     }
 
     // Executes an API call to the OpenLibrary search endpoint, parses the results
@@ -109,7 +108,23 @@ public class BookListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_book_list, menu);
-        return true;
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                // Fetch the data remotely
+                fetchBooks(s);
+                searchView.clearFocus();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
