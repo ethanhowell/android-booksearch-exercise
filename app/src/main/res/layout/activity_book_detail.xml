@@ -5,11 +5,14 @@
     android:orientation="vertical"
     tools:context=".activities.BookDetailActivity">
 
+    <include layout="@layout/toolbar_main" />
+
     <ImageView
         android:id="@+id/ivBookCover"
         android:layout_marginTop="8dp"
         android:layout_width="280dp"
-        android:layout_height="280dp" />
+        android:layout_height="280dp"
+        android:contentDescription="@string/book_cover_image_description" />
 
     <TextView
         android:id="@+id/tvTitle"

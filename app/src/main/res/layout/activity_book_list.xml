@@ -4,6 +4,8 @@
     android:layout_height="match_parent"
     tools:context=".activities.BookListActivity">
 
+    <include layout="@layout/toolbar_main" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBooks"
         android:layout_width="match_parent"

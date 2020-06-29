@@ -6,5 +6,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_book_detail">BookDetailActivity</string>
     <string name="search_bar_help">Search</string>
+    <string name="book_cover_image_description">book cover image</string>
 
 </resources>

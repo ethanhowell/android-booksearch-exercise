@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.codepath.android.booksearch.GlideApp;
 import com.codepath.android.booksearch.R;
@@ -14,14 +15,16 @@ import com.codepath.android.booksearch.models.Book;
 
 import org.parceler.Parcels;
 
-import java.util.Objects;
-
 public class BookDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_detail);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        setSupportActionBar(toolbar);
+
         // Fetch views
         ImageView ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
         TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -35,7 +38,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 .load(book.getCoverUrl())
                 .into(ivBookCover);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle(book.getTitle());
+        toolbar.setTitle(book.getTitle());
     }
 
 
