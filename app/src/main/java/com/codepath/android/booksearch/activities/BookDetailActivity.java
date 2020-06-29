@@ -23,7 +23,6 @@ public class BookDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
-        setSupportActionBar(toolbar);
 
         // Fetch views
         ImageView ivBookCover = (ImageView) findViewById(R.id.ivBookCover);
@@ -39,6 +38,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 .into(ivBookCover);
 
         toolbar.setTitle(book.getTitle());
+        setSupportActionBar(toolbar);
     }
 
 
